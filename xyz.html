@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Camera Icon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #dbf0ce;
+        }
+        header {
+            background: linear-gradient(135deg, #79d42a, #5ba418);
+            color: white;
+            padding: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            animation: slideDown 1s ease-in;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            background: #afdba1;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+        }
+        .form-container h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #4de439;
+            border-radius: 5px;
+        }
+        .upload-container {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 50px;
+        }
+        .upload-container input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+        .upload-container label {
+            cursor: pointer;
+            color: #babec3;
+        }
+        .camera-icon {
+            font-size: 48px;
+            color: #babec3;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .camera-icon:hover {
+            color:  #babec3;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a9505;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #078957;
+        }
+        h1{
+            margin: 10px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .center-image {
+        
+            padding-top: 50px;
+            display: block;
+            margin: 0 auto;
+            padding-bottom: 20px;
+               
+        }
+        p{
+            padding: 40px;
+            text-align: center;
+            
+        }
+        footer {
+            background: #79d42a;
+            color: white;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Plant Trees and Save Lives</h1>
+       
+    </header>
+
+   
+    
+    <p>
+        Planting trees is a simple yet powerful step in preserving nature and ensuring a healthier future.Planting trees is essential for both the environment and human well-being.The many benefits that it provides include: <strong>Improving Air Quality,Climate Regulation,Soil Conservation,Flood Control.</strong>
+        <br> <br>
+        Let's take an oath to plant trees on our every birthdays or special events to sustain life on the Earth.
+        Everytime when you plant a tree in your garden or neighbourhood,share the moment with us.
+    </p>
+    <div class="form-container">
+        <h1>Plant Trees and Save Lives</h1>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter your location" required>
+            
+            <div class="upload-container">
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+                <label for="photo">
+                    <img src="https://img.icons8.com/?size=100&id=lMK80N2QxxpY&format=png" alt="">
+                </label>
+                <p>Click the camera icon to upload a photo</p>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <p>©  Green Earth | Together for a better  future</p>
+    </footer>
+</body>
+</html>
