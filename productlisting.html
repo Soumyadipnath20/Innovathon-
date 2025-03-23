@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Waste Categories</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+        h1 {
+            background: linear-gradient(135deg, #79d42a, #5ba418);
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        h2{
+            margin-bottom: 100px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 20px;
+        }
+
+        .dustbin {
+            width: 180px;
+            height: 250px;
+            position: relative;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .lid {
+            width: 190px;
+            height: 30px;
+            background-color: black;
+            position: absolute;
+            top: -15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .paper {
+            width: 200px;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleY(0);
+            padding: 10px;
+            font-size: 14px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            color: black;
+            transition: transform 0.5s ease-in-out;
+            transform-origin: top;
+        }
+
+        .active .lid {
+            transform: rotateX(150deg);
+        }
+
+        .active .paper {
+            transform: translateX(-50%) scaleY(1);
+        }
+
+        .recycle-icon {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .plastic { background-color: #f4a261; }
+        .organic { background-color: #2a9d8f; }
+        .paper-waste { background-color: #e9c46a; }
+        .metal { background-color: #264653; }
+        .mixed { background-color: #8d99ae; }
+        .e-waste { background-color: #e63946; }
+        .glass { background-color: #3a86ff; }
+        .hazardous { background-color: #6a0572; }
+
+        footer {
+            margin-top: 50px;
+            background: #79d42a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Waste Categories</h1>
+    <h2>Click on a dustbin to learn how to recycle.</h2>
+    <div class="container">
+        <div class="dustbin plastic" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Plastic Waste
+            <div class="paper">Recycle plastic bottles, containers & packaging separately.</div>
+        </div>
+        <div class="dustbin organic" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Organic Waste
+            <div class="paper">Compost food scraps, vegetable peels & garden waste.</div>
+        </div>
+        <div class="dustbin paper-waste" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Paper Waste
+            <div class="paper">Recycle newspapers, magazines, cardboard & office paper.</div>
+        </div>
+        <div class="dustbin metal" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Metal Waste
+            <div class="paper">Recycle aluminum cans, steel items & metal parts.</div>
+        </div>
+        <div class="dustbin mixed" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Mixed Waste
+            <div class="paper">Dispose of unrecyclable items responsibly.</div>
+        </div>
+        <div class="dustbin e-waste" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            E-Waste
+            <div class="paper">Recycle old phones, batteries, & electronic devices.</div>
+        </div>
+        <div class="dustbin glass" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Glass Waste
+            <div class="paper">Recycle glass bottles, jars & broken glass safely.</div>
+        </div>
+        <div class="dustbin hazardous" onclick="toggleBin(this)">
+            <div class="lid"></div>
+            <img class="recycle-icon" src="recyclep.png" alt="Recycle">
+            Hazardous Waste
+            <div class="paper">Dispose of chemicals, paints, and medical waste properly.</div>
+        </div>
+    </div>
+    <footer>
+        © 2025 Green Recycling Initiative. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleBin(element) {
+            document.querySelectorAll('.dustbin').forEach(bin => {
+                if (bin !== element) {
+                    bin.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
