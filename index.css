@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: rgb(10, 10, 10);
+    background-color: rgb(120, 248, 120);
+}
+
+.main {
+    background-image: url("earth-day-environment-green-globe-260nw-2285503199.webp");
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: relative;
+}
+
+.main .box {
+    height: 80vh;
+    width: 100%;
+    opacity: 0.2;
+    background-color: green;
+    position: absolute;
+    z-index: 1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: green;
+    font-size: 23px;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    color: wheat;
+}
+
+ul {
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    color: wheat;
+}
+
+nav ul li .link:hover {
+    color: black;
+    /* background-color: rgb(197, 233, 197); */
+    text-decoration: underline;
+}
+
+li {
+    list-style: none;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.head {
+    font-size: 34px;
+    width: 700px;
+    margin: auto;
+    color: black;
+    padding-top: 10px;
+    text-align: center;
+    padding: 30px;
+}
+
+.btn{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+    padding: 10px 24px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.button{
+    width: 300px;
+    margin: auto;
+    padding: 10px 24px;
+}
+
+.btn:hover{
+    background-color: rgb(0, 54, 0);
+}
+
+.line{
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+    padding: 12px 24px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    /* border: 2px solid red; */
+    width: 1000px;
+    max-width: 90%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1 {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    width: 70%;
+    height: 10vh;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.box1:hover {
+    transform: scale(1.05);
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: blue;
+}
+
+/* Style for the menu container (fixed at top-right) */
+.menu-container {
+    position: relative;
+    top: 5px;
+    right: 10px;
+    display: inline-block;
+}
+
+/* Style for the three-dot button */
+.menu-button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Dropdown menu (initially hidden) */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Style for menu items */
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+/* Hover effect */
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.fas fa-ellipsis-v{
+    background: none;
+}
