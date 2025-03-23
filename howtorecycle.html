@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Recycle</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: linear-gradient(135deg, #79d42a, #5ba418);
+            color: white;
+            padding: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            animation: slideDown 1s ease-in;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        .diagram img {
+            width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding: 40px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .section:hover {
+            transform: scale(1.05);
+        }
+        .section img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .locator {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        .large-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+    </style>
+    <script>
+        function fetchRecyclingCenters() {
+            const address = prompt("Enter your address to find the nearest recycling center:");
+            if (address) {
+                document.getElementById("recycleMap").src = `https://www.google.com/maps?q=recycling+center+near+${encodeURIComponent(address)}&output=embed`;
+            }
+        }
+        window.onload = fetchRecyclingCenters;
+    </script>
+</head>
+<body>
+    <div class="box">
+        <header>How to Recycle Properly</header>
+    </div>
+    
+    <div class="box diagram">
+        <h2>Recycling Process</h2>
+        <p class="large-text">Recycling helps save the environment by reducing waste. Learn how to recycle different materials properly.</p>
+        <img src="recycleprocess.png" alt="Recycling Process">
+        <p><strong>Step 1:</strong> Collect waste → <strong>Step 2:</strong> Sort materials → <strong>Step 3:</strong> Process recyclables → <strong>Step 4:</strong> Reuse in new products.</p>
+    </div>
+    
+    <div class="box container">
+        <div class="section">
+            <img src="https://th.bing.com/th/id/OIP.O8VEE9nKPpqdYD0IUjaMFAHaFF?rs=1&pid=ImgDetMain" alt="Plastic">
+            <h3>Plastic</h3>
+            <p>Rinse plastic bottles and containers before recycling. Avoid plastic bags unless specified by your local recycling program. Some plastics can be repurposed into new bottles, clothing, or construction materials. Check the recycling symbol and number on plastic items to ensure proper disposal.</p>
+        </div>
+        <div class="section">
+            <img src="https://www.cleanipedia.com/images/v2/133b626dc6fc13a9335ae4ce9fd68953-3600w-2400h.jpg" alt="Paper">
+            <h3>Paper</h3>
+            <p>Flatten cardboard boxes and remove food stains before recycling paper. Newspapers, magazines, and office papers can be processed into new paper products. Shredded paper should be placed in a paper bag before recycling to prevent scattering.</p>
+        </div>
+        <div class="section">
+            <img src="https://th.bing.com/th/id/OIP.rVy4BEYayokDJbTfvlc2zwHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Glass">
+            <h3>Glass</h3>
+            <p>Separate glass by color. Rinse before placing in the bin. Recycled glass can be melted and reshaped into new bottles and jars multiple times. Avoid mixing glass with ceramics or tempered glass, as these cannot be recycled together.</p>
+        </div>
+        <div class="section">
+            <img src="https://th.bing.com/th/id/OIP.CuD6XXJ-vUIsicfBoZfflAHaE8?rs=1&pid=ImgDetMain" alt="Metal">
+            <h3>Metal</h3>
+            <p>Recycle aluminum cans, tins, and scrap metal after cleaning them. Metals can be reprocessed into car parts, appliances, and new cans. Ensure that aerosol cans are completely empty before recycling.</p>
+        </div>
+    </div>
+    
+    <div class="box locator">
+        <h2>Find a Recycling Center Near You</h2>
+        <iframe 
+            id="recycleMap"
+            width="100%" 
+            height="300" 
+            frameborder="0" 
+            style="border:0" 
+            allowfullscreen>
+        </iframe>
+        <p>Locate the nearest recycling center and contribute to a cleaner environment.</p>
+    </div>
+    
+    <div class="box">
+        <footer>
+            <p>&copy; 2025 Go Green Initiative. Help keep our planet clean!</p>
+        </footer>
+    </div>
+</body>
+</html>
