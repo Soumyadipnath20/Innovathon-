@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="download.png">
+
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+ .bottom-center-btn {
+    display: block;
+    margin: 80px auto 0; /* Adjusted spacing above the bottom */
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #28a745, #218838); /* Green gradient */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.bottom-center-btn:hover {
+    background: linear-gradient(45deg, #218838, #1e7e34);
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+.bottom-center-btn:active {
+    transform: scale(0.98); /* Pressed effect */
+}
+
+ /* Footer Styling */
+ footer {
+            background-color: #28a745;  
+            margin-top: 50px;
+            color: white; /* Footer text color changed to white */
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            animation: fadeIn 2s ease-out 1.5s forwards; /* Fade-in effect for footer */
+        }
+
+        footer p {
+            color: white; /* Set the color of the copyright text to white */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box"></div>
+        <nav>
+            <span style=" font-weight:bold">SustainSwap</span>
+            <ul>
+                <li><a class="link" href="#">Home</a></li>
+                <li><a class="link" href="aboutus.html">About us</a></li>
+                <li><a class="link" href="join.html">Join Us</a></li>
+            </ul>
+            <div class="menu-container">
+                <button class="menu-button">
+                    <i class="fas fa-ellipsis-v"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path></svg></i> <!-- Vertical 3-dot icon -->
+                </button>
+                <div class="dropdown-menu">
+                    <a href="Past_Temperature_Records.html">Past Temparature Record</a>
+                    <a href="Pollution.html">Pollution History</a>
+                    <a href="xyz.html">Plant Trees & Save Lives</a>
+                </div>
+            </div>
+        
+        </nav>
+        <div class="head">
+            <h3>Join the Fight Against Pollution!</h3>
+            <br>
+            <p>Save our planet for future generations by reducing pollution and adopting eco-friendly habits.</p>
+        </div>
+
+    </div>
+    <div class="line">
+        <h2>Let's make the earth a better place to live</h2>
+    </div>
+    <!-- <div class="button">
+
+        <button class="btn">Take An Action</button>
+    </div> -->
+
+    <section class="info">
+        <div class="box1">
+           
+            <a href="productlisting.html">Product Listing</a>
+            <!-- <br>
+            <p>Wet waste</p>
+            <p>Dry waste</p>
+            <p>Metal waste</p>
+            <p>E-waste</p> -->
+        </div>
+        <div class="box1">
+            <a href="reuse.html">How to reuse</a>
+           
+            
+        </div>
+        <div class="box1">
+            <a href="repairshops.html">Repair Services</a>
+            <!-- <br>
+            <p>Store Location</p> -->
+        </div>
+        <div class="box1">
+            <a href="howtorecycle.html">How to recycle</a>
+            <!-- <br>
+            <p>Where to recycle</p>
+            <p>Recycle an item</p> -->
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menu-button");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+
+    // Toggle dropdown on button click
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent immediate close
+        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+});
+    </script>
+
+    
+    <button class="bottom-center-btn" onclick="window.location.href='feedback.html';">Give your valuable Feedback</button>
+    
+      <!-- Footer Section -->
+      <footer>
+        <p>&copy;SustainSwap. All rights reserved. | 
+            <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        <p>Contact us: <a href="mailto:contact@sustainswap.com">contact@sustainswap.com</a> | 
+            Phone: +91 9876543210 </p>
+    </footer>
+
+</body>
+
+</html>
+
+ 
