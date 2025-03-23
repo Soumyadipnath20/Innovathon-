@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Repair Shops</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            color: #2e7d32;
+            font-size: 2rem;
+        }
+        #status {
+            background: #81c784;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: red;
+        }
+        #location-info, #shops-container {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            width: 90%;
+        }
+        #map {
+            width: 90%;
+            height: 450px;
+            margin-top: 10px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #2e7d32;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 90%;
+            background: #c8e6c9;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #66bb6a;
+            font-size: 1.1rem;
+            color: #2e7d32;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+   
+        #shops-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers text inside */
+    justify-content: center; /* Centers horizontally */
+    margin: 20px auto; /* Centers the box */
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Adjusts width for better appearance */
+    width: 90%; /* Responsive for smaller screens */
+    text-align: center; /* Centers text inside */
+}
+
+    </style>
+    <script>
+       function fetchLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const { latitude, longitude } = position.coords;
+            document.getElementById("status").textContent = "Location fetched successfully!";
+            
+            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+            const data = await response.json();
+            const address = data.display_name || "Address not found";
+            
+            document.getElementById("location-info").innerHTML = `<strong>Address:</strong> ${address}<br>
+                                                                   <strong>Latitude:</strong> ${latitude.toFixed(5)}, <strong>Longitude:</strong> ${longitude.toFixed(5)}`;
+            
+            const map = L.map('map').setView([latitude, longitude], 14);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            L.marker([latitude, longitude]).addTo(map).bindPopup("You are here").openPopup();
+            
+            const query = `[out:json];
+            (
+                node["shop"="car_repair"](around:25000,${latitude},${longitude});
+                node["amenity"="car_repair"](around:25000,${latitude},${longitude});
+                node["service"="vehicle_repair"](around:25000,${latitude},${longitude});
+                node["automobile"="repair"](around:25000,${latitude},${longitude});
+                node["shop"="tyres"](around:25000,${latitude},${longitude});
+                node["service"="tyres"](around:25000,${latitude},${longitude});
+            );
+            out center;`;
+
+            try {
+                const nearbyResponse = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
+                const nearbyData = await nearbyResponse.json();
+                console.log("Nearby Shops Data:", nearbyData);
+
+                let shopList = document.getElementById("shops-list");
+                shopList.innerHTML = ""; 
+
+                let shops = nearbyData.elements
+                    .filter(shop => shop.lat && shop.lon)
+                    .map(shop => ({
+                        name: shop.tags.name || "Unnamed Repair Shop",
+                        lat: shop.lat,
+                        lon: shop.lon,
+                        distance: calculateDistance(latitude, longitude, shop.lat, shop.lon)
+                    }))
+                    .sort((a, b) => a.distance - b.distance)
+                    .slice(0, 5);
+
+                if (shops.length === 0) {
+                    shopList.innerHTML = "<li>No repair shops found within 25km.</li>";
+                } else {
+                    shops.forEach(shop => {
+                        let li = document.createElement("li");
+                        li.innerHTML = `<strong>${shop.name}</strong><br>
+                                        Latitude: ${shop.lat.toFixed(5)}, Longitude: ${shop.lon.toFixed(5)}<br>
+                                        Distance: ${shop.distance.toFixed(2)} km`;
+                        shopList.appendChild(li);
+
+                        L.marker([shop.lat, shop.lon]).addTo(map)
+                            .bindPopup(`${shop.name} (${shop.distance.toFixed(2)} km away)`);
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching nearby shops:", error);
+                document.getElementById("shops-list").innerHTML = "<li>Error fetching nearby repair shops.</li>";
+            }
+        }, () => {
+            document.getElementById("status").textContent = "Location access denied. Please enable location services.";
+            document.getElementById("status").classList.add("error");
+        });
+    } else {
+        document.getElementById("status").textContent = "Geolocation is not supported by this browser.";
+        document.getElementById("status").classList.add("error");
+    }
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of Earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // Distance in km
+}
+
+    </script>
+</head>
+<body onload="fetchLocation()">
+    <h1>Nearby Repair Shops</h1>
+    <p id="status">Fetching location...</p>
+    <div id="location-info">Fetching place details...</div>
+    <div id="map"></div>
+    <div id="shops-container">
+        <h2>Repair Shops</h2>
+        <ul id="shops-list"></ul>
+    </div>
+</body>
+</html>
