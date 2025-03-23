@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Temperature Records of Kolkata</title>
+    <style>
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e0f6d7, #c5e3b3);
+    color: #333;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Container for all content */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the header */
+header {
+    background: linear-gradient(135deg, #79d42a, #5ba418);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #2d5f2d;
+}
+
+/* Style for the main content */
+main {
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+.info p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #444;
+}
+
+/* Style for the Temperature Data section */
+.temperature-data h2 {
+    color: #2d5f2d;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #333;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding-bottom: 10px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #131313;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+figcaption {
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    color: #555;
+}
+
+footer {
+    background: linear-gradient(135deg, #79d42a, #5ba418);
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <h1>Past Temperature Records of Kolkata</h1>
+    </header>
+    <main>
+        <section class="info">
+            <p>Explore the historical temperature records of Kolkata. Learn about the changing patterns and trends observed over the years.</p>
+        </section>
+        <section class="temperature-data">
+            <h2>Temperature Insights</h2>
+            <div class="image-container">
+                <figure>
+            <img src="temperature_graph.png" alt="Error Loading image">
+            <figcaption>Fig: Temperature Records of Kolkata for the period of 2017 - 2021</figcaption>
+        </figure>
+        </div>
+            <p>Kolkata and its surroundings have warmed up especially and worse is in store, the Intergovernmental Panel on Climate Change (IPCC) report has warned.Here are some of the major reasins for spike in temperature and the probable consequence:- <br> 
+                <ul type="square">
+               <li> Urbanisation also contributed to a rise in the city’s temperature, with more than 80 per cent warming being generated within the city itself, the report said. It added that “urban centres and cities were warmer than the surrounding rural areas due to the urban heat island effect”. </li> Urban heat island effect arises from several factors, including reduced ventilation and heat being trapped as tall buildings are closely packed in a small area; heat generated from human activities; heat-absorbing properties of concrete and other urban building materials; and limited amount of vegetation.</li> <br> <br>
+               <li>The data analysis under various greenhouse emission scenarios showed that the annual mean temperature may increase 4.5°C by end of the century compared to the pre-industrial period under business-as-usual emission scenario Representative Concentration Pathway (RCP) 8.5.</li>
+                <br> <br>
+                <li>RCP 8.5 accounts for 3-4°C global average temperature rise compared to compared to pre-industrialisation times.
+                “Kolkata, hardly 100 km away from the Sundarbans, will have to bear the brunt of sea level rise. High tides will become higher and there is a possibility of more acute and longer duration flooding,” said Subimal Ghosh, scientist, Indian Institute of Technology, Mumbai.</li> <br>
+                <strong>Super cyclones, sharp sea level rise, surge in short burst rainfall are the major consequences.</strong> 
+            </ul>
+            </p>
+            <i>Source:IPCC report warning: 4.5°C rise in Kolkata by century-end, rise in cyclones, sea level.</i> 
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Kolkata Average Temperature Data</p>
+    </footer>
+</body>
+</html>
